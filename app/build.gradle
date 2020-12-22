@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.androidtestapplication"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -18,6 +18,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android {
+        flavorDimensions "distribute"
+        productFlavors {
+            appCenter {
+                dimension "distribute"
+            }
+            googlePlay {
+                dimension "distribute"
+            }
         }
     }
 }
@@ -33,4 +45,9 @@ dependencies {
     //play core
     implementation 'com.google.android.play:core:1.8.2'
 
+
+    def appCenterSdkVersion = '4.0.0'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 }
